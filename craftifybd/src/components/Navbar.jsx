@@ -10,14 +10,14 @@ const Navbar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </div>
                         <ul tabIndex={0} className="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 ">
-                            <li><a>Home</a></li>
+                            <li><NavLink to="/">Home</NavLink></li>
                             <li><NavLink to={`/about-us`}>About Us</NavLink></li>
-                            <li><a>All Art & craft Items</a></li>
+                            <li><NavLink to="/products">All Art & Craft List</NavLink></li>
                             <li>
                                 <a>My Action</a>
                                 <ul className="p-2">
                                     <li><a>Add Craft Item</a></li>
-                                    <li><a>My Art & Craft List</a></li>
+                                    <li><NavLink to="/products">My Art & Craft List</NavLink></li>
                                 </ul>
                             </li>
                         </ul>
@@ -33,16 +33,16 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 font-medium">
-                        <li><a>Home</a></li>
+                        <li><NavLink to="/">Home</NavLink></li>
                         <li><NavLink to={`/about-us`}>About Us</NavLink></li>
                         <li><NavLink to={`/faq`}>FAQ</NavLink></li>
-                        <li><a>All Art & craft Items</a></li>
+                        <li><NavLink to="/products">All Art & Craft List</NavLink></li>
                         <li>
                             <details className="">
                                 <summary>My Action</summary>
                                 <ul className="p-2">
                                     <li><a>Add Craft Item</a></li>
-                                    <li><a>My Art & Craft List</a></li>
+                                    <li><NavLink to="/products">My Art & Craft List</NavLink></li>
                                 </ul>
                             </details>
                         </li>
@@ -59,10 +59,10 @@ const Navbar = () => {
                     <div className="hs-tooltip inline-block">
                         <a className="hs-tooltip-toggle relative inline-block" href="#">
                             <img className="inline-block size-[46px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description"></img>
-                                <span className="absolute bottom-0 end-0 block size-3 rounded-full ring-2 ring-white bg-teal-400 dark:ring-neutral-900"></span>
-                                <div className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-lg shadow-sm dark:bg-neutral-700" role="tooltip">
-                                    Mark Wanner is online
-                                </div>
+                            <span className="animate-pulse absolute bottom-0 end-0 block size-2 rounded-full ring-2 ring-white bg-teal-400 dark:ring-neutral-900"></span>
+                            <div className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-lg shadow-sm dark:bg-neutral-700" role="tooltip">
+                                Mark Wanner is online
+                            </div>
                         </a>
                     </div>
                 </div>

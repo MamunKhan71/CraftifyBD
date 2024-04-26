@@ -1,4 +1,5 @@
 import Banner from "../components/Banner";
+import CallToAction from "../components/CallToAction";
 import Category from "../components/Category";
 import ContactUs from "../components/ContactUs";
 // import ClientReviews from "../components/ClientReviews";
@@ -18,6 +19,7 @@ const Home = () => {
             {/* <FeaturedProducts /> */}
             <OurFeatures />
             <ContactUs />
+            <CallToAction />
             {/* <ClientReviews /> */}
         </div>
     );
