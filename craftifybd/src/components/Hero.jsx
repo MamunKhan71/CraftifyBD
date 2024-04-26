@@ -16,7 +16,7 @@ const Hero = () => {
                     error repellat voluptatibus ad.
                 </p>
                 <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
-                    Find a class
+                    Add Cart Item
                 </button>
             </div>
             <ShuffleGrid />
