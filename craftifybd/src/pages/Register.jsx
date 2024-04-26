@@ -43,7 +43,6 @@ const Register = () => {
                                 className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                                 type=""
                                 placeholder="Enter your name"
-                                defaultValue="John Doe"
                             />
                         </div>
                         <div className="relative">
@@ -70,7 +69,6 @@ const Register = () => {
                                 className=" w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                                 type=""
                                 placeholder="mail@gmail.com"
-                                defaultValue="mail@gmail.com"
                             />
                         </div>
                         <div className="mt-8 content-center">
@@ -81,19 +79,78 @@ const Register = () => {
                                 className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                                 type=""
                                 placeholder="Enter your photo url"
-                                defaultValue="https://"
                             />
                         </div>
-                        <div className="mt-8 content-center">
-                            <label className="text-sm font-bold text-gray-700 tracking-wide">
-                                Password
-                            </label>
-                            <input
-                                className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
-                                type=""
-                                placeholder="Enter your password"
-                                defaultValue="*****|"
-                            />
+                        <div>
+                            <div className="max-w-sm">
+                                <div className="flex mb-2">
+                                    <div className="flex-1">
+                                        <input type="password" id="hs-strong-password-with-indicator-and-hint" className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter password"></input>
+                                            <div id="hs-strong-password" data-hs-strong-password='{
+            "target": "#hs-strong-password-with-indicator-and-hint",
+            "hints": "#hs-strong-password-hints",
+            "stripClasses": "hs-strong-password:opacity-100 hs-strong-password-accepted:bg-teal-500 h-2 flex-auto rounded-full bg-blue-500 opacity-50 mx-1"
+          }' className="flex mt-2 -mx-1"></div>
+                                    </div>
+                                </div>
+
+                                <div id="hs-strong-password-hints" className="mb-3">
+                                    <div>
+                                        <span className="text-sm text-gray-800 dark:text-gray-800">Level: </span>
+                                        <span data-hs-strong-password-hints-weakness-text='["Empty", "Weak", "Medium", "Strong", "Very Strong", "Super Strong"]' className="text-sm font-semibold text-gray-800 dark:text-gray-800"></span>
+                                    </div>
+
+                                    <h4 className="my-2 text-sm font-semibold text-gray-800 dark:text-white">
+                                        Your password must contain:
+                                    </h4>
+
+                                    <ul className="space-y-1 text-sm text-gray-500 dark:text-neutral-500">
+                                        <li data-hs-strong-password-hints-rule-text="min-length" className="hs-strong-password-active:text-teal-500 flex items-center gap-x-2">
+                                            <span className="hidden" data-check="">
+                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                                </svg>
+                                            </span>
+                                            <span data-uncheck="">
+                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M18 6 6 18"></path>
+                                                    <path d="m6 6 12 12"></path>
+                                                </svg>
+                                            </span>
+                                            Minimum number of characters is 6.
+                                        </li>
+                                        <li data-hs-strong-password-hints-rule-text="lowercase" className="hs-strong-password-active:text-teal-500 flex items-center gap-x-2">
+                                            <span className="hidden" data-check="">
+                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                                </svg>
+                                            </span>
+                                            <span data-uncheck="">
+                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M18 6 6 18"></path>
+                                                    <path d="m6 6 12 12"></path>
+                                                </svg>
+                                            </span>
+                                            Should contain lowercase.
+                                        </li>
+                                        <li data-hs-strong-password-hints-rule-text="uppercase" className="hs-strong-password-active:text-teal-500 flex items-center gap-x-2">
+                                            <span className="hidden" data-check="">
+                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                                </svg>
+                                            </span>
+                                            <span data-uncheck="">
+                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M18 6 6 18"></path>
+                                                    <path d="m6 6 12 12"></path>
+                                                </svg>
+                                            </span>
+                                            Should contain uppercase.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">

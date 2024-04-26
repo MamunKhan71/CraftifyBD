@@ -2,7 +2,7 @@ import { FiSend } from "react-icons/fi";
 import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
     return (
-        <div className="z-10 relative">
+        <div className="z-20 relative">
             <div className="navbar bg-base-100 px-0">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -35,6 +35,7 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1 font-medium">
                         <li><a>Home</a></li>
                         <li><NavLink to={`/about-us`}>About Us</NavLink></li>
+                        <li><NavLink to={`/faq`}>FAQ</NavLink></li>
                         <li><a>All Art & craft Items</a></li>
                         <li>
                             <details className="">
@@ -54,6 +55,15 @@ const Navbar = () => {
                             <FiSend />
                             <Link to="/login">Login</Link>
                         </button>
+                    </div>
+                    <div className="hs-tooltip inline-block">
+                        <a className="hs-tooltip-toggle relative inline-block" href="#">
+                            <img className="inline-block size-[46px] rounded-full" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80" alt="Image Description"></img>
+                                <span className="absolute bottom-0 end-0 block size-3 rounded-full ring-2 ring-white bg-teal-400 dark:ring-neutral-900"></span>
+                                <div className="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded-lg shadow-sm dark:bg-neutral-700" role="tooltip">
+                                    Mark Wanner is online
+                                </div>
+                        </a>
                     </div>
                 </div>
             </div>
