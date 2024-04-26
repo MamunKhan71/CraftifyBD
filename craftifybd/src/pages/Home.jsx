@@ -8,12 +8,14 @@ import FeaturedProducts from "../components/FeaturedProducts";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import OurFeatures from "../components/OurFeatures";
+import Stats from "../components/Stats";
 
 const Home = () => {
     return (
         <div className="space-y-24">
             {/* <Header/> */}
             <Banner />
+            <Stats />
             <Category />
             <CraftItems />
             {/* <FeaturedProducts /> */}
