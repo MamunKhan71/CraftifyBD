@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 const Hero = () => {
     return (
-        <section className="w-full py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+        <section className="w-full py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 bg-base-200 bg-opacity-50 backdrop-blur-md p-12 rounded-2xl">
             <div>
                 <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
                     Better every day

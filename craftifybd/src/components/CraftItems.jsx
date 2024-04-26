@@ -3,7 +3,7 @@ const CraftItems = () => {
     <div className="space-y-12">
       <h1 className="text-2xl font-bold text-center">Our Category</h1>
       <div className="grid gap-4 grid-cols-4">
-        <div className="card bg-base-100 shadow-xl">
+        <div className="card bg-base-100 shadow-lg hover:shadow-xl transition ">
           <figure className="px-5 pt-5">
             <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" className="rounded-xl" />
           </figure>
