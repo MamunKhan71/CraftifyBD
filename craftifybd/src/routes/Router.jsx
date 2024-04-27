@@ -8,6 +8,8 @@ import ErrorPage from "../pages/ErrorPage";
 import FAQ from "../pages/FAQs";
 import ProductDetails from "../pages/ProductDetails";
 import ProductList from "../pages/ProductList";
+import UserProfile from "../pages/UserProfile";
+import AddProducts from "../pages/AddProducts";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -41,6 +43,14 @@ const Router = createBrowserRouter([
             {
                 path: '/products',
                 element: <ProductList />
+            },
+            {
+                path: '/profile',
+                element: <UserProfile />
+            },
+            {
+                path: '/addproducts',
+                element: <AddProducts />
             }
         ]
     },

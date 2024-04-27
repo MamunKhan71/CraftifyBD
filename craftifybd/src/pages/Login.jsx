@@ -3,7 +3,8 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const { handleEmailLogin, googleSignIn, githubSignIn, userSignOut } = useContext(AuthContext)
     const {
@@ -22,21 +23,19 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then((result) => {
-                const user = result.user;
+                toast.success("Login Successful!")
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                toast.error("Something went wrong!")
             })
     }
     const handleGithubLogin = () => {
         githubSignIn()
             .then((result) => {
-                const user = result.user;
+                toast.success("Login Successful!")
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                toast.error("Something went wrong!")
             })
     }
     const handleLogin = data => {
@@ -44,12 +43,10 @@ const Login = () => {
         const password = data.password
         handleEmailLogin(email, password)
             .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user);
+                toast.success("Login Successful!")
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                toast.error("Something went wrong!")
             });
     }
     return (
@@ -179,6 +176,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </>
 
     );

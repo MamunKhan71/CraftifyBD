@@ -12,9 +12,8 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser)
             setLoading(false)
         })
-        return unsubscribe
+        return unsubscribe;
     }, [])
-    console.log(user);
     const createUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
@@ -40,7 +39,7 @@ const AuthProvider = ({ children }) => {
     const userSignOut = () => {
         return signOut(auth)
     }
-    const authValues = { handleEmailLogin, googleSignIn, githubSignIn, createUser, profileUpdater, userSignOut }
+    const authValues = { handleEmailLogin, googleSignIn, githubSignIn, createUser, profileUpdater, userSignOut, user }
     return (
         <AuthContext.Provider value={authValues}>
             {children}
