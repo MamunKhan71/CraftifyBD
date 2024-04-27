@@ -5,6 +5,9 @@ const Stats = () => {
             <div className="px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
                 {/* Grid */}
                 <div className="flex justify-between sm:gap-12 lg:grid-cols-3 lg:gap-8">
+                    <div>
+                        
+                    </div>
                     {/* Stats */}
                     <div>
                         <h4 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-neutral-200">

@@ -1,6 +1,48 @@
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useForm } from 'react-hook-form';
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 const Login = () => {
+    const { handleEmailLogin, googleSignIn, githubSignIn } = useContext(AuthContext)
+    const {
+        register,
+        handleSubmit,
+    } = useForm();
+
+    const handleGoogleLogin = () => {
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            })
+    }
+    const handleGithubLogin = () => {
+        githubSignIn()
+            .then((result) => {
+                const user = result.user;
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            })
+    }
+    const handleLogin = data => {
+        const email = data.email
+        const password = data.password
+        handleEmailLogin(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+    }
     return (
         <>
             <div
@@ -15,12 +57,12 @@ const Login = () => {
                         </p>
                     </div>
                     <div className="flex flex-row justify-center items-center space-x-3">
-                        <span className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300">
+                        <button onClick={handleGoogleLogin} className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white  bg-blue-900 hover:shadow-lg cursor-pointer transition ease-in duration-300">
                             <FaGoogle />
-                        </span>
-                        <span className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white bg-blue-400 hover:shadow-lg cursor-pointer transition ease-in duration-300">
+                        </button>
+                        <button onClick={handleGithubLogin} className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white bg-blue-400 hover:shadow-lg cursor-pointer transition ease-in duration-300">
                             <FaGithub />
-                        </span>
+                        </button>
                         {/* <span className="w-11 h-11 items-center justify-center inline-flex rounded-full font-bold text-lg  text-white bg-blue-500 hover:shadow-lg cursor-pointer transition ease-in duration-300">
                             <img
                                 src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDI0IDI0IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj48Zz48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0yMy45OTQgMjR2LS4wMDFoLjAwNnYtOC44MDJjMC00LjMwNi0uOTI3LTcuNjIzLTUuOTYxLTcuNjIzLTIuNDIgMC00LjA0NCAxLjMyOC00LjcwNyAyLjU4N2gtLjA3di0yLjE4NWgtNC43NzN2MTYuMDIzaDQuOTd2LTcuOTM0YzAtMi4wODkuMzk2LTQuMTA5IDIuOTgzLTQuMTA5IDIuNTQ5IDAgMi41ODcgMi4zODQgMi41ODcgNC4yNDN2Ny44MDF6IiBmaWxsPSIjZmZmZmZmIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIj48L3BhdGg+PHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkPSJtLjM5NiA3Ljk3N2g0Ljk3NnYxNi4wMjNoLTQuOTc2eiIgZmlsbD0iI2ZmZmZmZiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgc3R5bGU9IiI+PC9wYXRoPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0ibTIuODgyIDBjLTEuNTkxIDAtMi44ODIgMS4yOTEtMi44ODIgMi44ODJzMS4yOTEgMi45MDkgMi44ODIgMi45MDkgMi44ODItMS4zMTggMi44ODItMi45MDljLS4wMDEtMS41OTEtMS4yOTItMi44ODItMi44ODItMi44ODJ6IiBmaWxsPSIjZmZmZmZmIiBkYXRhLW9yaWdpbmFsPSIjMDAwMDAwIiBzdHlsZT0iIj48L3BhdGg+PC9nPjwvc3ZnPg=="
@@ -33,8 +75,8 @@ const Login = () => {
                         <span className="text-gray-500 font-normal">OR</span>
                         <span className="h-px w-16 bg-gray-300" />
                     </div>
-                    <form className="mt-8 space-y-6" action="#" method="POST">
-                        <input type="hidden" name="remember" defaultValue="true" />
+                    <form className="mt-8 space-y-6" action="#" method="POST" onSubmit={handleSubmit(handleLogin)}>
+                        <input type="hidden" name="remember" />
                         <div className="relative">
                             <div className="absolute right-0 mt-4">
                                 <svg
@@ -55,11 +97,10 @@ const Login = () => {
                             <label className="text-sm font-bold text-gray-700 tracking-wide">
                                 Email
                             </label>
-                            <input
+                            <input {...register('email')}
                                 className=" w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                                 type=""
                                 placeholder="mail@gmail.com"
-                                defaultValue="mail@gmail.com"
                             />
                         </div>
                         <div>
@@ -68,7 +109,7 @@ const Login = () => {
                                     Password
                                 </label>
                                 <div className="relative">
-                                    <input id="hs-toggle-password" type="password" className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter password" defaultValue="12345qwerty"></input>
+                                    <input {...register('password')} id="hs-toggle-password" type="password" className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter password"></input>
                                     <button type="button" data-hs-toggle-password='{
         "target": "#hs-toggle-password"
       }' className="absolute top-0 end-0 p-3.5 rounded-e-md">
