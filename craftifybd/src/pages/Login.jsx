@@ -3,13 +3,22 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 const Login = () => {
-    const { handleEmailLogin, googleSignIn, githubSignIn } = useContext(AuthContext)
+    const { handleEmailLogin, googleSignIn, githubSignIn, userSignOut } = useContext(AuthContext)
     const {
         register,
         handleSubmit,
     } = useForm();
 
+    const handleSignOut = () => {
+        userSignOut()
+            .then(() => {
+                toast.success("Signed Out Success!")
+            }).catch((error) => {
+                toast.error("Something went wrong!")
+            });
+    }
     const handleGoogleLogin = () => {
         googleSignIn()
             .then((result) => {

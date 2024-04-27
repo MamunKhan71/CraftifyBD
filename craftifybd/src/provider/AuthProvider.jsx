@@ -1,22 +1,46 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import auth from "../utils/firebase.config";
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword, GoogleAuthProvider, signOut, signInWithPopup, GithubAuthProvider, updateProfile, createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 export const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true)
+    const [user, setUser] = useState(null)
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser)
+            setLoading(false)
+        })
+        return unsubscribe
+    }, [])
+    console.log(user);
+    const createUser = (email, password) => {
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
     const googleSignIn = () => {
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
     const githubSignIn = () => {
+        setLoading(true)
         return signInWithPopup(auth, githubProvider)
     }
     const handleEmailLogin = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
-
-    const authValues = { handleEmailLogin, googleSignIn, githubSignIn }
+    const profileUpdater = (name, photoUrl) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photoUrl
+        })
+    }
+    const userSignOut = () => {
+        return signOut(auth)
+    }
+    const authValues = { handleEmailLogin, googleSignIn, githubSignIn, createUser, profileUpdater, userSignOut }
     return (
         <AuthContext.Provider value={authValues}>
             {children}

@@ -1,6 +1,33 @@
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { useForm } from 'react-hook-form';
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 const Register = () => {
+    const { createUser, profileUpdater, user } = useContext(AuthContext)
+    console.log(user);
+    const {
+        register,
+        handleSubmit,
+    } = useForm();
+
+    const handleRegister = data => {
+        const name = data.name
+        const email = data.email
+        const photourl = data.photourl
+        const password = data.password
+        createUser(email, password)
+            .then(() => {
+                profileUpdater(name, photourl)
+                    .then(() => {
+                        toast.info("User Registered Successfully!")
+                    })
+                    .catch(() => {
+                        console.log("Something went wrong!");
+                    })
+            })
+    }
     return (
         <>
             <div
@@ -33,13 +60,13 @@ const Register = () => {
                         <span className="text-gray-500 font-normal">OR</span>
                         <span className="h-px w-16 bg-gray-300" />
                     </div>
-                    <form className="mt-8 space-y-6" action="#" method="POST">
+                    <form onSubmit={handleSubmit(handleRegister)} className="mt-8 space-y-6" action="#" method="POST">
                         <input type="hidden" name="remember" defaultValue="true" />
                         <div className="mt-8 content-center">
                             <label className="text-sm font-bold text-gray-700 tracking-wide">
                                 Name
                             </label>
-                            <input
+                            <input {...register('name')}
                                 className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                                 type=""
                                 placeholder="Enter your name"
@@ -65,7 +92,7 @@ const Register = () => {
                             <label className="text-sm font-bold text-gray-700 tracking-wide">
                                 Email
                             </label>
-                            <input
+                            <input {...register('email')}
                                 className=" w-full text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                                 type=""
                                 placeholder="mail@gmail.com"
@@ -75,7 +102,7 @@ const Register = () => {
                             <label className="text-sm font-bold text-gray-700 tracking-wide">
                                 Photo Url
                             </label>
-                            <input
+                            <input {...register('photourl')}
                                 className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
                                 type=""
                                 placeholder="Enter your photo url"
@@ -85,8 +112,8 @@ const Register = () => {
                             <div className="max-w-sm">
                                 <div className="flex mb-2">
                                     <div className="flex-1">
-                                        <input type="password" id="hs-strong-password-with-indicator-and-hint" className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter password"></input>
-                                            <div id="hs-strong-password" data-hs-strong-password='{
+                                        <input {...register('password')} type="password" id="hs-strong-password-with-indicator-and-hint" className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter password"></input>
+                                        <div id="hs-strong-password" data-hs-strong-password='{
             "target": "#hs-strong-password-with-indicator-and-hint",
             "hints": "#hs-strong-password-hints",
             "stripClasses": "hs-strong-password:opacity-100 hs-strong-password-accepted:bg-teal-500 h-2 flex-auto rounded-full bg-blue-500 opacity-50 mx-1"
