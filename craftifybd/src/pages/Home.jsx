@@ -1,4 +1,3 @@
-import { useContext, useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import CallToAction from "../components/CallToAction";
 import Category from "../components/Category";
@@ -10,14 +9,9 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import OurFeatures from "../components/OurFeatures";
 import Stats from "../components/Stats";
-import { ContentContext } from "../provider/ContentProvider";
 
 const Home = () => {
-    const [product, setProduct] = useState([])
-    const { products } = useContext(ContentContext)
-    useEffect(() => {
-        products
-    }, [])
+
     return (
         <div className="space-y-24">
             {/* <Header/> */}
