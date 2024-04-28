@@ -1,13 +1,24 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaStar } from "react-icons/fa";
+import Swal from 'sweetalert2'
 const AddProducts = () => {
     const [sliderValue, setSliderValue] = useState(1)
     const {
         register,
         handleSubmit,
     } = useForm();
-
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
     const handleProductData = data => {
         const userName = data.name
         const userEmail = data.email
@@ -35,13 +46,34 @@ const AddProducts = () => {
             stockStatus,
             itemDescription,
         }
-        fetch('http://localhost:5000/products', {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(newProduct)
-        }).then(() => { console.log("Data added successfully!"); })
+        Swal.fire({
+            title: 'Are you sure to add',
+            text: 'Do you want to add this to database?',
+            icon: 'warning',
+            confirmButtonText: 'Yes, Add it'
+        }).then((res) => {
+            if (res.isConfirmed) {
+                fetch('http://localhost:5000/products', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newProduct)
+                }).then(() => {
+                    Toast.fire({
+                        icon: "success",
+                        title: "Signed in successfully"
+                    });
+                })
+            } else {
+                Toast.fire({
+                    icon: "error",
+                    title: "Product could not be added"
+                })
+            }
+
+        })
+
     }
     return (
         <div>

@@ -21,7 +21,7 @@ const Navbar = () => {
                                 <a>My Action</a>
                                 <ul className="p-2">
                                     <li><a>Add Craft Item</a></li>
-                                    <li><NavLink to="/products">My Art & Craft List</NavLink></li>
+                                    <li><NavLink to="/myproducts">My Art & Craft List</NavLink></li>
                                 </ul>
                             </li>
                         </ul>
@@ -47,7 +47,7 @@ const Navbar = () => {
                                     <summary>My Action</summary>
                                     <ul className="p-2">
                                         <li><NavLink to={`/addproducts`}>Add Craft Item</NavLink></li>
-                                        <li><NavLink to="/products">My Art & Craft List</NavLink></li>
+                                        <li><NavLink to="/myproducts">My Art & Craft List</NavLink></li>
                                     </ul>
                                 </details>
                             </li>
@@ -58,9 +58,9 @@ const Navbar = () => {
                     {
                         user ? <div className="flex items-center gap-4 justify-between">
                             <div className="dropdown dropdown-end">
-                                <div tabIndex={0} role="button"><div className="avatar online">
+                                <div tabIndex={0} role="button"  data-tip={user.displayName} className="tooltip tooltip-bottom"><div className="avatar online" >
                                     <div className="w-12 rounded-full">
-                                        <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                        <img src={user.photoURL} />
                                     </div>
                                 </div></div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-xl w-52">

@@ -11,6 +11,7 @@ import ProductList from "../pages/ProductList";
 import UserProfile from "../pages/UserProfile";
 import AddProducts from "../pages/AddProducts";
 import ProtectedContent from "./ProtectedContent";
+import MyProducts from "../pages/MyProducts";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -40,6 +41,10 @@ const Router = createBrowserRouter([
             {
                 path: '/products',
                 element: <ProductList />
+            },
+            {
+                path: '/myproducts',
+                element: <ProtectedContent><MyProducts /></ProtectedContent>
             },
             {
                 path: '/products/:id',

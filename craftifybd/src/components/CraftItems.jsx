@@ -12,7 +12,7 @@ const CraftItems = () => {
   const [product, setProduct] = useState([])
   const { products } = useContext(ContentContext)
   useEffect(() => {
-    setProduct(products.slice(0, 4))
+    setProduct(products.slice(0, 6))
   }, [products])
   return (
     <div className="space-y-12">
