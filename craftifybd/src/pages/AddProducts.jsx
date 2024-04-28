@@ -1,8 +1,27 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { FaStar } from "react-icons/fa";
 const AddProducts = () => {
     const [sliderValue, setSliderValue] = useState(1)
-    console.log(sliderValue);
+    const {
+        register,
+        handleSubmit,
+    } = useForm();
+
+    const handleProductData = data => {
+        const name = data.name
+        const email = data.email
+        const phone = data.phone
+        const itemName = data.itemName
+        const subCategory = data.subCategory
+        const price = data.price
+        const rating = data.rating
+        const customization = data.customization
+        const processingTime = data.processingTime
+        const stockStatus = data.stock
+        const itemDescription = data.description
+        console.log(name, email, phone, itemName, subCategory, price, rating, customization, processingTime, stockStatus, itemDescription);
+    }
     return (
         <div>
             <>
@@ -13,7 +32,7 @@ const AddProducts = () => {
                     </h2>
                     {/* Card */}
                     <div className="bg-white rounded-xl shadow p-4 sm:p-7 dark:bg-neutral-900">
-                        <form>
+                        <form onSubmit={handleSubmit(handleProductData)}>
                             {/* Section */}
                             <div className="grid sm:grid-cols-12 gap-2 sm:gap-4 py-8 first:pt-0 last:pb-0 border-t first:border-transparent border-gray-200 dark:border-neutral-700 dark:first:border-transparent">
                                 <div className="sm:col-span-12">
@@ -33,7 +52,7 @@ const AddProducts = () => {
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
                                     <div className="sm:flex">
-                                        <input
+                                        <input {...register('name')}
                                             id="af-submit-application-email"
                                             type="text"
                                             className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -51,7 +70,7 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <input
+                                    <input {...register('email')}
                                         id="af-submit-application-email"
                                         type="email"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -70,7 +89,7 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <input
+                                    <input {...register('phone')}
                                         id="af-submit-application-phone"
                                         type="text"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -96,7 +115,7 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <input
+                                    <input {...register('itemName')}
                                         id="af-submit-application-email"
                                         type="text"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -114,14 +133,14 @@ const AddProducts = () => {
                                     </div>
                                 </div>
                                 <div className="sm:col-span-9">
-                                    <select className="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                    <select {...register('subCategory')} className="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                         <option selected disabled>Select one</option>
                                         <option value={`Card Making`}>Card Making</option>
                                         <option value={`Scrapbooking`}>Scrapbooking</option>
                                         <option value={`Paper Quilling & origami`}>Paper Quilling & origami</option>
-                                        <option>Glass Painting</option>
-                                        <option>Lampworking</option>
-                                        <option>Glass Dying & Staining</option>
+                                        <option value={`glass Painting`}>Glass Painting</option>
+                                        <option value={`Lampworking`}>Lampworking</option>
+                                        <option value={`Glass Dying & Staining`}>Glass Dying & Staining</option>
                                     </select>
                                 </div>
                                 <div className="sm:col-span-3">
@@ -134,7 +153,7 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <input
+                                    <input {...register('price')}
                                         id="af-submit-application-email"
                                         type="text"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -150,7 +169,7 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <input type="range" min={1} max={5} value={sliderValue} className="range range-xs" step={1} onChange={(e) => setSliderValue(e.target.value)} />
+                                    <input {...register('rating')} type="range" min={1} max={5} value={sliderValue} className="range range-xs" step={1} onChange={(e) => setSliderValue(e.target.value)} />
                                     <div className="w-full flex justify-between text-xs px-2">
                                         <span><FaStar className="text-lg text-amber-500" /></span>
                                         <span><FaStar className="text-lg text-amber-500" /></span>
@@ -171,37 +190,15 @@ const AddProducts = () => {
                                 </div>
                                 <div className="sm:col-span-9">
                                     <div className="grid sm:grid-cols-2 gap-2">
-                                        <label
-                                            htmlFor="hs-radio-in-form"
-                                            className="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
-                                        >
-                                            <input
-                                                type="radio"
-                                                name="hs-radio-in-form"
-                                                className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                id="hs-radio-in-form"
-                                            />
-                                            <span className="text-sm text-gray-500 ms-3 dark:text-neutral-400">
-                                                Yes
-                                            </span>
+                                        <label htmlFor="hs-radio-in-form" className="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                                            <input value={"Yes"} {...register('customization')} type="radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-radio-in-form" />
+                                            <span className="text-sm text-gray-500 ms-3 dark:text-neutral-400">Yes</span>
                                         </label>
-                                        <label
-                                            htmlFor="hs-radio-checked-in-form"
-                                            className="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400"
-                                        >
-                                            <input
-                                                type="radio"
-                                                name="hs-radio-in-form"
-                                                className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
-                                                id="hs-radio-checked-in-form"
-                                                defaultChecked=""
-                                            />
-                                            <span className="text-sm text-gray-500 ms-3 dark:text-neutral-400">
-                                                No
-                                            </span>
+                                        <label htmlFor="hs-radio-checked-in-form" className="flex p-3 w-full bg-white border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400">
+                                            <input value={"No"} {...register('customization')} type="radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="hs-radio-checked-in-form" />
+                                            <span className="text-sm text-gray-500 ms-3 dark:text-neutral-400">No</span>
                                         </label>
                                     </div>
-
                                 </div>
                                 <div className="sm:col-span-3">
                                     <label
@@ -213,7 +210,7 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <input
+                                    <input {...register('processingTime')}
                                         id="af-submit-application-email"
                                         type="text"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -233,10 +230,9 @@ const AddProducts = () => {
                                         <li className="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg dark:bg-neutral-800 dark:border-neutral-700 dark:text-white">
                                             <div className="relative flex items-start w-full">
                                                 <div className="flex items-center h-5">
-                                                    <input
+                                                    <input {...register('stock')}
                                                         id="hs-horizontal-list-group-item-radio-1"
-                                                        name="hs-horizontal-list-group-item-radio"
-                                                        type="radio"
+                                                        type="radio" value={0}
                                                         className="border-gray-200 rounded-full disabled:opacity-50 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                                         defaultChecked=""
                                                     />
@@ -252,10 +248,10 @@ const AddProducts = () => {
                                         <li className="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg dark:bg-neutral-800 dark:border-neutral-700 dark:text-white">
                                             <div className="relative flex items-start w-full">
                                                 <div className="flex items-center h-5">
-                                                    <input
+                                                    <input {...register('stock')}
                                                         id="hs-horizontal-list-group-item-radio-2"
-                                                        name="hs-horizontal-list-group-item-radio"
                                                         type="radio"
+                                                        value={1}
                                                         className="border-gray-200 rounded-full disabled:opacity-50 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                                     />
                                                 </div>
@@ -270,10 +266,10 @@ const AddProducts = () => {
                                         <li className="inline-flex items-center gap-x-2.5 py-3 px-4 text-sm font-medium bg-white border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg sm:-ms-px sm:mt-0 sm:first:rounded-se-none sm:first:rounded-es-lg sm:last:rounded-es-none sm:last:rounded-se-lg dark:bg-neutral-800 dark:border-neutral-700 dark:text-white">
                                             <div className="relative flex items-start w-full">
                                                 <div className="flex items-center h-5">
-                                                    <input
+                                                    <input {...register('stock')}
                                                         id="hs-horizontal-list-group-item-radio-3"
-                                                        name="hs-horizontal-list-group-item-radio"
                                                         type="radio"
+                                                        value={2}
                                                         className="border-gray-200 rounded-full disabled:opacity-50 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                                     />
                                                 </div>
@@ -301,7 +297,7 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <textarea
+                                    <textarea {...register('description')}
                                         id="af-submit-application-bio"
                                         className="py-2 px-3 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                                         rows={6}
@@ -341,7 +337,7 @@ const AddProducts = () => {
                             </div>
                             {/* End Section */}
                             <button
-                                type="button"
+                                type="submit"
                                 className="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                             >
                                 Add Product
