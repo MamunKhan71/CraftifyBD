@@ -24,6 +24,6 @@ export default {
   },
   plugins: [require("daisyui"), require('preline/plugin')],
   daisyui: {
-    themes: ["light"]
+    themes: ["light", "dark"],
   }
 }
