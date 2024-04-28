@@ -10,6 +10,7 @@ import ProductDetails from "../pages/ProductDetails";
 import ProductList from "../pages/ProductList";
 import UserProfile from "../pages/UserProfile";
 import AddProducts from "../pages/AddProducts";
+import ProtectedContent from "./ProtectedContent";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -50,7 +51,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/addproducts',
-                element: <AddProducts />
+                element: <ProtectedContent><AddProducts /></ProtectedContent>
             }
         ]
     },
