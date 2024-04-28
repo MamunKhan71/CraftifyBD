@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
 import { useContext } from "react";
@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const { handleEmailLogin, googleSignIn, githubSignIn, userSignOut } = useContext(AuthContext)
+    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
@@ -16,6 +17,7 @@ const Login = () => {
         userSignOut()
             .then(() => {
                 toast.success("Signed Out Success!")
+                navigate('/')
             }).catch((error) => {
                 toast.error("Something went wrong!")
             });
@@ -24,6 +26,7 @@ const Login = () => {
         googleSignIn()
             .then((result) => {
                 toast.success("Login Successful!")
+                navigate('/')
             })
             .catch((error) => {
                 toast.error("Something went wrong!")
@@ -33,6 +36,7 @@ const Login = () => {
         githubSignIn()
             .then((result) => {
                 toast.success("Login Successful!")
+                navigate('/')
             })
             .catch((error) => {
                 toast.error("Something went wrong!")
@@ -43,6 +47,7 @@ const Login = () => {
         const password = data.password
         handleEmailLogin(email, password)
             .then((userCredential) => {
+                navigate('/')
                 toast.success("Login Successful!")
             })
             .catch((error) => {

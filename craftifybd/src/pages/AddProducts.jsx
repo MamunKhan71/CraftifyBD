@@ -2,23 +2,23 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaStar } from "react-icons/fa";
 import Swal from 'sweetalert2'
+export const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+    }
+});
 const AddProducts = () => {
     const [sliderValue, setSliderValue] = useState(1)
     const {
         register,
         handleSubmit,
     } = useForm();
-    const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-        }
-    });
     const handleProductData = data => {
         const userName = data.name
         const userEmail = data.email

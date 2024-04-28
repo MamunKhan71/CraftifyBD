@@ -1,17 +1,35 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Swal from "sweetalert2";
+import { Toast } from "./AddProducts";
 const Register = () => {
+
     const { createUser, profileUpdater, user, userSignOut, googleSignIn, githubSignIn } = useContext(AuthContext)
     const navigate = useNavigate()
+    const [passInfo, setPassInfo] = useState(null)
+    const [password, setPassword] = useState('');
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
     const {
         register,
         handleSubmit,
+        resetField
     } = useForm();
+
+    const checkPass = (password) => {
+        if (/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
+            setPassInfo("Valid Password");
+            return true;
+        } else {
+            setPassInfo("Invalid Password");
+        }
+    }
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then((result) => {
@@ -33,21 +51,36 @@ const Register = () => {
                 toast.error("Something went wrong!")
             })
     }
-    const handleRegister = data => {
-        const name = data.name
+    const handleRegister = (data) => {
         const email = data.email
-        const photourl = data.photourl
         const password = data.password
-        createUser(email, password)
-            .then(() => {
-                profileUpdater(name, photourl)
-                    .then(() => {
-                        toast.info("User Registered Successfully!")
-                    })
-                    .catch(() => {
-                        toast.error("Something went wrong!");
-                    })
+        if (checkPass(password)) {
+            const photoUrl = data.photourl ? data.photourl : ''
+            const name = data.name ? data.name : ''
+            createUser(email, password)
+                .then(() => {
+                    profileUpdater(name, photoUrl)
+                        .then(userSignOut())
+                        .then(() => {
+                            Toast.fire({
+                                icon: "success",
+                                title: "Account Created, Please Login!"
+                            })
+                        })
+                        .then(navigate('/login'))
+                })
+                .catch(() => Toast.fire({
+                    icon: "error",
+                    title: "Email already exists!"
+                }))
+        } else {
+            Toast.fire({
+                icon: "info",
+                title: "Enter a valid password"
             })
+                .then(() => { resetField('password') })
+        }
+
     }
     return (
         <>
@@ -133,69 +166,19 @@ const Register = () => {
                             <div className="max-w-sm">
                                 <div className="flex mb-2">
                                     <div className="flex-1">
-                                        <input {...register('password')} type="password" id="hs-strong-password-with-indicator-and-hint" className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" placeholder="Enter password"></input>
-                                        <div id="hs-strong-password" data-hs-strong-password='{
-            "target": "#hs-strong-password-with-indicator-and-hint",
-            "hints": "#hs-strong-password-hints",
-            "stripClasses": "hs-strong-password:opacity-100 hs-strong-password-accepted:bg-teal-500 h-2 flex-auto rounded-full bg-blue-500 opacity-50 mx-1"
-          }' className="flex mt-2 -mx-1"></div>
+                                        <div>
+                                            <div id="hs-strong-password" className="flex mt-2 -mx-1"></div>
+                                            <input
+                                                {...register('password')}
+                                                onKeyUp={(e) => checkPass(e.target.value)}
+                                                type="password"
+                                                className="w-full content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500"
+                                                placeholder="Enter password"
+                                                onChange={handlePasswordChange}
+                                            />
+                                        </div>
+                                        {passInfo && <span className={`font-semibold text-sm flex justify-end animate__animated animate__headShake ${passInfo === 'Valid' ? "text-green-600" : "text-[#EB6753]"}`}>{passInfo}</span>}
                                     </div>
-                                </div>
-
-                                <div id="hs-strong-password-hints" className="mb-3">
-                                    <div>
-                                        <span className="text-sm text-gray-800 dark:text-gray-800">Level: </span>
-                                        <span data-hs-strong-password-hints-weakness-text='["Empty", "Weak", "Medium", "Strong", "Very Strong", "Super Strong"]' className="text-sm font-semibold text-gray-800 dark:text-gray-800"></span>
-                                    </div>
-
-                                    <h4 className="my-2 text-sm font-semibold text-gray-800 dark:text-white">
-                                        Your password must contain:
-                                    </h4>
-
-                                    <ul className="space-y-1 text-sm text-gray-500 dark:text-neutral-500">
-                                        <li data-hs-strong-password-hints-rule-text="min-length" className="hs-strong-password-active:text-teal-500 flex items-center gap-x-2">
-                                            <span className="hidden" data-check="">
-                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                                </svg>
-                                            </span>
-                                            <span data-uncheck="">
-                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M18 6 6 18"></path>
-                                                    <path d="m6 6 12 12"></path>
-                                                </svg>
-                                            </span>
-                                            Minimum number of characters is 6.
-                                        </li>
-                                        <li data-hs-strong-password-hints-rule-text="lowercase" className="hs-strong-password-active:text-teal-500 flex items-center gap-x-2">
-                                            <span className="hidden" data-check="">
-                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                                </svg>
-                                            </span>
-                                            <span data-uncheck="">
-                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M18 6 6 18"></path>
-                                                    <path d="m6 6 12 12"></path>
-                                                </svg>
-                                            </span>
-                                            Should contain lowercase.
-                                        </li>
-                                        <li data-hs-strong-password-hints-rule-text="uppercase" className="hs-strong-password-active:text-teal-500 flex items-center gap-x-2">
-                                            <span className="hidden" data-check="">
-                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                                </svg>
-                                            </span>
-                                            <span data-uncheck="">
-                                                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                    <path d="M18 6 6 18"></path>
-                                                    <path d="m6 6 12 12"></path>
-                                                </svg>
-                                            </span>
-                                            Should contain uppercase.
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
 
