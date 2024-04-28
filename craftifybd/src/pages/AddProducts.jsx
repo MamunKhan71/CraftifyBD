@@ -9,10 +9,11 @@ const AddProducts = () => {
     } = useForm();
 
     const handleProductData = data => {
-        const name = data.name
-        const email = data.email
-        const phone = data.phone
+        const userName = data.name
+        const userEmail = data.email
+        const userPhone = data.phone
         const itemName = data.itemName
+        const itemPhoto = data.itemPhoto
         const subCategory = data.subCategory
         const price = data.price
         const rating = data.rating
@@ -20,7 +21,27 @@ const AddProducts = () => {
         const processingTime = data.processingTime
         const stockStatus = data.stock
         const itemDescription = data.description
-        console.log(name, email, phone, itemName, subCategory, price, rating, customization, processingTime, stockStatus, itemDescription);
+        const newProduct = {
+            userName,
+            userEmail,
+            userPhone,
+            itemPhoto,
+            itemName,
+            subCategory,
+            price,
+            rating,
+            customization,
+            processingTime,
+            stockStatus,
+            itemDescription,
+        }
+        fetch('http://localhost:5000/products', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newProduct)
+        }).then(() => { console.log("Data added successfully!"); })
     }
     return (
         <div>
@@ -116,6 +137,22 @@ const AddProducts = () => {
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
                                     <input {...register('itemName')}
+                                        id="af-submit-application-email"
+                                        type="text"
+                                        className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                                    />
+                                </div>
+                                <div className="sm:col-span-3">
+                                    <label
+                                        htmlFor="af-submit-application-email"
+                                        className="inline-block text-sm font-medium text-gray-500 mt-2.5 dark:text-neutral-500"
+                                    >
+                                        Item Photo Url
+                                    </label>
+                                </div>
+                                {/* End Col */}
+                                <div className="sm:col-span-9">
+                                    <input {...register('itemPhoto')}
                                         id="af-submit-application-email"
                                         type="text"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -232,7 +269,7 @@ const AddProducts = () => {
                                                 <div className="flex items-center h-5">
                                                     <input {...register('stock')}
                                                         id="hs-horizontal-list-group-item-radio-1"
-                                                        type="radio" value={0}
+                                                        type="radio" value={`In Stock`}
                                                         className="border-gray-200 rounded-full disabled:opacity-50 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                                         defaultChecked=""
                                                     />
@@ -251,7 +288,7 @@ const AddProducts = () => {
                                                     <input {...register('stock')}
                                                         id="hs-horizontal-list-group-item-radio-2"
                                                         type="radio"
-                                                        value={1}
+                                                        value={`Made to order`}
                                                         className="border-gray-200 rounded-full disabled:opacity-50 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                                     />
                                                 </div>
@@ -269,7 +306,7 @@ const AddProducts = () => {
                                                     <input {...register('stock')}
                                                         id="hs-horizontal-list-group-item-radio-3"
                                                         type="radio"
-                                                        value={2}
+                                                        value={`Out of stock`}
                                                         className="border-gray-200 rounded-full disabled:opacity-50 dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"
                                                     />
                                                 </div>

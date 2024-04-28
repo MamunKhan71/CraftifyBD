@@ -9,7 +9,7 @@ const CraftItems = () => {
   return (
     <div className="space-y-12">
       <h1 className="text-2xl font-bold text-center">Our Category</h1>
-      <div className="grid gap-4 grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div className="card bg-base-100 shadow-lg transition hover:scale-105 hover:shadow-lg">
           <div className="relative">
             <figure className="px-5 pt-5">

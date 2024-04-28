@@ -37,12 +37,12 @@ const Router = createBrowserRouter([
                 element: <FAQ />
             },
             {
-                path: '/details',
-                element: <ProductDetails />
-            },
-            {
                 path: '/products',
                 element: <ProductList />
+            },
+            {
+                path: '/products/:id',
+                element: <ProductDetails />
             },
             {
                 path: '/profile',
