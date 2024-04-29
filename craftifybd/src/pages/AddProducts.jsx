@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaStar } from "react-icons/fa";
 import Swal from 'sweetalert2'
+import { AuthContext } from "../provider/AuthProvider";
 export const Toast = Swal.mixin({
     toast: true,
     position: "top-end",
@@ -15,6 +16,7 @@ export const Toast = Swal.mixin({
 });
 const AddProducts = () => {
     const [sliderValue, setSliderValue] = useState(1)
+    const { user } = useContext(AuthContext)
     const {
         register,
         handleSubmit,
@@ -32,7 +34,9 @@ const AddProducts = () => {
         const processingTime = data.processingTime
         const stockStatus = data.stock
         const itemDescription = data.description
+        const _id = user?.uid
         const newProduct = {
+            _id,
             userName,
             userEmail,
             userPhone,

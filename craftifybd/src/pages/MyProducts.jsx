@@ -12,7 +12,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext)
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/userproducts/${user?.email}`)
+        fetch(`http://localhost:5000/userproducts/${user?.uid}`)
             .then((res) => res.json())
             .then(data => setProduct(data))
             .then(setLoading(false))
