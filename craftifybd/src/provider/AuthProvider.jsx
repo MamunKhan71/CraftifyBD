@@ -37,6 +37,7 @@ const AuthProvider = ({ children }) => {
         })
     }
     const userSignOut = () => {
+        localStorage.removeItem('isAuth')
         return signOut(auth)
     }
     const authValues = { handleEmailLogin, googleSignIn, githubSignIn, createUser, profileUpdater, userSignOut, user }

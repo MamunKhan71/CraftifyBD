@@ -23,7 +23,7 @@ const Register = () => {
     } = useForm();
 
     const checkPass = (password) => {
-        if (/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
+        if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/.test(password)) {
             setPassInfo("Valid Password");
             return true;
         } else {
@@ -33,8 +33,34 @@ const Register = () => {
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then((result) => {
-                userSignOut()
-                navigate('/login')
+                const name = result.user.displayName
+                const email = result.user.email
+                const photoURL = result.user.photoURL
+                const creationTime = result.user.metadata.creationTime
+                const uid = result.user.uid
+                const newUser = {
+                    _id: uid,
+                    userName: name,
+                    userEmail: email,
+                    userPhoto: photoURL,
+                    userCreated: creationTime,
+                }
+                fetch('http://localhost:5000/addusers', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                }).then(() => {
+                    Toast.fire({
+                        icon: "success",
+                        title: "Account Created, Please Login!"
+                    }).then(() => {
+                        userSignOut()
+                        navigate('/login')
+                    })
+                })
+
             })
             .catch((error) => {
                 toast.error("Something went wrong!")
@@ -43,9 +69,34 @@ const Register = () => {
     const handleGithubSignIn = () => {
         githubSignIn()
             .then((result) => {
-                toast.success("Sign Up Successful! Please Login")
-                userSignOut()
-                navigate('/login')
+                console.log(result);
+                const name = result.user.displayName
+                const email = result.user.email
+                const photoURL = result.user.photoURL
+                const creationTime = result.user.metadata.creationTime
+                const uid = result.user.uid
+                const newUser = {
+                    _id: uid,
+                    userName: name,
+                    userEmail: email,
+                    userPhoto: photoURL,
+                    userCreated: creationTime,
+                }
+                fetch('http://localhost:5000/addusers', {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                }).then(() => {
+                    Toast.fire({
+                        icon: "success",
+                        title: "Account Created, Please Login!"
+                    }).then(() => {
+                        userSignOut()
+                        navigate('/login')
+                    })
+                })
             })
             .catch((error) => {
                 toast.error("Something went wrong!")
@@ -54,20 +105,47 @@ const Register = () => {
     const handleRegister = (data) => {
         const email = data.email
         const password = data.password
+        console.log(email, password);
         if (checkPass(password)) {
             const photoUrl = data.photourl ? data.photourl : ''
-            const name = data.name ? data.name : ''
+            const userName = data.name ? data.name : ''
             createUser(email, password)
-                .then(() => {
-                    profileUpdater(name, photoUrl)
-                        .then(userSignOut())
-                        .then(() => {
-                            Toast.fire({
-                                icon: "success",
-                                title: "Account Created, Please Login!"
-                            })
+                .then((result) => {
+                    console.log(result);
+                    const name = userName
+                    const email = result.user.email
+                    const photoURL = photoUrl
+                    const creationTime = result.user.metadata.creationTime
+                    const uid = result.user.uid
+                    const newUser = {
+                        _id: uid,
+                        userName: name,
+                        userEmail: email,
+                        userPhoto: photoURL,
+                        userCreated: creationTime,
+                    }
+                    fetch('http://localhost:5000/addusers', {
+                        method: "POST",
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(newUser)
+                    }).then(() => {
+                        Toast.fire({
+                            icon: "success",
+                            title: "Account Created, Please Login!"
+                        }).then(() => {
+                            profileUpdater(name, photoUrl)
+                                .then(userSignOut())
+                                .then(() => {
+                                    Toast.fire({
+                                        icon: "success",
+                                        title: "Account Created, Please Login!"
+                                    })
+                                })
+                                .then(navigate('/login'))
                         })
-                        .then(navigate('/login'))
+                    })
                 })
                 .catch(() => Toast.fire({
                     icon: "error",
@@ -90,9 +168,9 @@ const Register = () => {
                 <div className="absolute  inset-0 z-0" />
                 <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
                     <div className="text-center">
-                        <h2 className="mt-6 text-3xl font-bold text-gray-900">Welcom Back!</h2>
+                        <h2 className="mt-6 text-3xl font-bold text-gray-900">Register</h2>
                         <p className="mt-2 text-sm text-gray-600">
-                            Please sign in to your account
+                            Please sign up your account
                         </p>
                     </div>
                     <div className="flex flex-row justify-center items-center space-x-3">

@@ -12,6 +12,7 @@ import UserProfile from "../pages/UserProfile";
 import AddProducts from "../pages/AddProducts";
 import ProtectedContent from "./ProtectedContent";
 import MyProducts from "../pages/MyProducts";
+import LoginProtection from "./LoginProtection";
 const Router = createBrowserRouter([
     {
         path: "/",
@@ -24,11 +25,11 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: <Login />
+                element: <LoginProtection><Login /></LoginProtection>
             },
             {
                 path: '/register',
-                element: <Register />
+                element: <LoginProtection><Register /></LoginProtection>
             },
             {
                 path: '/about-us',

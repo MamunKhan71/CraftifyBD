@@ -25,6 +25,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         googleSignIn()
             .then((result) => {
+                localStorage.setItem('isAuth', 'authenticated')
                 toast.success("Login Successful!")
                 navigate('/')
             })
@@ -34,7 +35,8 @@ const Login = () => {
     }
     const handleGithubLogin = () => {
         githubSignIn()
-            .then((result) => {
+            .then(() => {
+                localStorage.setItem('isAuth', 'authenticated')
                 toast.success("Login Successful!")
                 navigate('/')
             })
@@ -47,6 +49,7 @@ const Login = () => {
         const password = data.password
         handleEmailLogin(email, password)
             .then((userCredential) => {
+                localStorage.setItem('isAuth', 'authenticated')
                 navigate('/')
                 toast.success("Login Successful!")
             })
@@ -62,9 +65,9 @@ const Login = () => {
                 <div className="absolute  inset-0 z-0" />
                 <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl z-10">
                     <div className="text-center">
-                        <h2 className="mt-6 text-3xl font-bold text-gray-900">Welcom Back!</h2>
+                        <h2 className="mt-6 text-3xl font-bold text-gray-900">Login</h2>
                         <p className="mt-2 text-sm text-gray-600">
-                            Please sign in to your account
+                            Please login to your account
                         </p>
                     </div>
                     <div className="flex flex-row justify-center items-center space-x-3">
