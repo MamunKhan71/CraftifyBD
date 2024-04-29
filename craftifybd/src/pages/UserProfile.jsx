@@ -39,12 +39,7 @@ const UserProfile = () => {
                             <div className="xl:w-[80%] lg:w-[90%] md:w-[90%] sm:w-[92%] xs:w-[90%] mx-auto flex flex-col gap-4 items-center relative lg:-top-8 md:-top-6 sm:-top-4 xs:-top-4">
                                 {/* Description */}
                                 <p className="w-fit text-gray-700 dark:text-gray-400 text-md">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-                                    debitis labore consectetur voluptatibus mollitia dolorem veniam omnis
-                                    ut quibusdam minima sapiente repellendus asperiores explicabo,
-                                    eligendi odit, dolore similique fugiat dolor, doloremque eveniet.
-                                    Odit, consequatur. Ratione voluptate exercitationem hic eligendi vitae
-                                    animi nam in, est earum culpa illum aliquam.
+                                    {users.userInfo}
                                 </p>
                                 {/* Detail */}
                                 <div className="w-full my-auto py-6 flex flex-col justify-center gap-2">
@@ -73,7 +68,7 @@ const UserProfile = () => {
                                                     <dt className="mb-1 text-gray-500 md:text-lg dark:text-gray-400">
                                                         Gender
                                                     </dt>
-                                                    <dd className="text-lg font-semibold">Male</dd>
+                                                    <dd className="text-lg font-semibold">{users.userGender}</dd>
                                                 </div>
                                             </dl>
                                         </div>
@@ -117,7 +112,7 @@ const UserProfile = () => {
                                 <dialog id="my_modal_4" className="modal">
                                     <div className="modal-box w-11/12 max-w-5xl">
                                         <div>
-                                            <EditUserProfile id={users._id}></EditUserProfile>
+                                            <EditUserProfile users={users}></EditUserProfile>
                                         </div>
                                         <div className="modal-action">
                                             <form method="dialog">
