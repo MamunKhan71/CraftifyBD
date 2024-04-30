@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
-
+import Lottie from "lottie-react";
+import error from '../../src/animation.json'
 const ErrorPage = () => {
     return (
         <div className="flex items-center justify-center h-screen w-full">
+
             <div className="lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
                 <div className="xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0">
                     <div className="relative">
@@ -26,7 +28,7 @@ const ErrorPage = () => {
                     </div>
                 </div>
                 <div>
-                    <img src="https://i.pinimg.com/originals/09/fa/46/09fa464f74f2b4d578f98a54b82fb456.gif" />
+                    <Lottie animationData={error} />
                 </div>
             </div>
         </div>
