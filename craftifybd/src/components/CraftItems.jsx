@@ -16,7 +16,7 @@ const CraftItems = () => {
   }, [products])
   return (
     <div className="space-y-12">
-      <h1 className="text-2xl font-bold text-center">Our Category</h1>
+      <h1 className="text-2xl font-bold text-center">Our Featured Products</h1>
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {
           product.map(product => <>
