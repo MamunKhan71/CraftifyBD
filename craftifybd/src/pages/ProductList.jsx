@@ -1,6 +1,3 @@
-import { Rating } from "@smastrom/react-rating";
-import { IoMdTime } from "react-icons/io";
-import '@smastrom/react-rating/style.css'
 import { useContext, useEffect, useState } from "react";
 import { IoFilter } from "react-icons/io5";
 import { MdDashboardCustomize } from "react-icons/md";
@@ -8,8 +5,16 @@ import { MdDoneAll } from "react-icons/md";
 import { ContentContext } from "../provider/ContentProvider";
 import { Link } from "react-router-dom";
 const ProductList = () => {
-    const [rating, setRating] = useState(4);
     const { products, loading } = useContext(ContentContext)
+    const [product, setProduct] = useState([])
+    useEffect(() => {
+        setProduct(products)
+    }, [products])
+    const handleFilter = () => {
+        fetch('http://localhost:5000/productfilter')
+            .then(res => res.json())
+            .then(data => setProduct(data))
+    }
     return (
         <div>
             <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
@@ -24,8 +29,8 @@ const ProductList = () => {
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn m-1"><IoFilter /> Filter by</div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a><MdDoneAll />All</a></li>
-                        <li><a><MdDashboardCustomize />Customization</a></li>
+                        <li><button onClick={() => setProduct(products)}><MdDoneAll />All</button></li>
+                        <li><button onClick={handleFilter}><MdDashboardCustomize />Customization</button></li>
                     </ul>
                 </div>
             </div>
@@ -48,7 +53,7 @@ const ProductList = () => {
                             <tbody>
                                 {/* row 1 */}
                                 {
-                                    products.map(product => <>
+                                    product.map(product => <>
                                         <tr>
                                             <td>
                                                 <div className="flex items-center gap-3">
