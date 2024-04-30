@@ -7,7 +7,7 @@ const Navbar = () => {
     const { user, userSignOut } = useContext(AuthContext)
     return (
         <div className="z-20 relative">
-            <div className="navbar bg-base-100 px-0">
+            <div className="navbar px-0">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
