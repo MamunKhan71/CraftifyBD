@@ -15,6 +15,9 @@ export const Toast = Swal.mixin({
     }
 });
 const AddProducts = () => {
+    const [photo, setPhoto] = useState(null)
+    const [phone, setPhone] = useState(null)
+    const [prices, setPrice] = useState(null)
     const [sliderValue, setSliderValue] = useState(1)
     const { user } = useContext(AuthContext)
     const {
@@ -24,19 +27,19 @@ const AddProducts = () => {
     const handleProductData = data => {
         const userName = data.name
         const userEmail = data.email
-        const userPhone = data.phone
+        const userPhone = phone
         const itemName = data.itemName
-        const itemPhoto = data.itemPhoto
+        const itemPhoto = photo
         const subCategory = data.subCategory
-        const price = data.price
+        const price = prices
         const rating = data.rating
         const customization = data.customization
         const processingTime = data.processingTime
         const stockStatus = data.stock
         const itemDescription = data.description
-        const _id = user?.uid
+        const uid = user?.uid
         const newProduct = {
-            _id,
+            uid,
             userName,
             userEmail,
             userPhone,
@@ -146,29 +149,11 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <div className="relative">
-                                        <input
-                                            type="text" {...register('phone')}
-                                            id="hs-inline-leading-select-label"
-                                            name="inline-add-on"
-                                            className="py-3 px-4 ps-20 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                                            placeholder="+1 (000) 000-0000"
-                                        />
-                                        <div className="absolute inset-y-0 start-4 flex items-center text-gray-500 ps-px">
-                                            <label htmlFor="hs-inline-leading-select-country" className="sr-only">
-                                                Country
-                                            </label>
-                                            <select
-                                                id="hs-inline-leading-select-country"
-                                                name="hs-inline-leading-select-country"
-                                                className="block w-full border-transparent rounded-lg focus:ring-blue-600 focus:border-blue-600 dark:text-neutral-500 dark:bg-neutral-800"
-                                            >
-                                                <option>US</option>
-                                                <option>CA</option>
-                                                <option>EU</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    <input {...register('phone')}
+                                        onChange={(e) => { setPhone(e.target.value) }}
+                                        type="number"
+                                        className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                                    />
                                 </div>
                             </div>
                             {/* End Section */}
@@ -212,9 +197,9 @@ const AddProducts = () => {
                                                 http://
                                             </span>
                                         </div>
-                                        <input
-                                            {...register('itemPhoto')}
+                                        <input {...register('photo')}
                                             type="text"
+                                            onChange={e => setPhoto(e.target.value)}
                                             name="hs-input-with-add-on-url"
                                             id="hs-input-with-add-on-url"
                                             className="py-3 px-4 pe-11 block w-full border-gray-200 shadow-sm rounded-e-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -258,8 +243,9 @@ const AddProducts = () => {
 
                                         <div className="relative">
                                             <input
+                                                {...register('price')}
+                                                onChange={(e) => setPrice(e.target.value)}
                                                 type="text"
-                                                id="hs-inline-leading-pricing-select-label"
                                                 name="inline-add-on"
                                                 className="py-3 px-4 ps-9 pe-20 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                                                 placeholder={0.0}

@@ -19,7 +19,7 @@ const MyProducts = () => {
     }, [user])
 
     const handleDelete = (products) => {
-        if (products.userEmail === user.email) {
+        if (products.uid === user?.uid) {
             Swal.fire({
                 title: 'Are you sure to delete?',
                 text: 'Do you want to delete this from database?',

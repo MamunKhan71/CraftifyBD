@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { Typewriter } from 'react-simple-typewriter'
 const Hero = () => {
     return (
         <section className="w-full py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 bg-base-200 bg-opacity-50 backdrop-blur-md p-12 rounded-2xl">
@@ -9,8 +9,23 @@ const Hero = () => {
                 <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
                     Better every day
                 </span>
-                <h3 className="text-4xl md:text-6xl font-semibold">
-                    Let's change it up a bit
+                <h3 className="">
+                    <h1 className="text-3xl md:text-5xl font-semibold" style={{ paddingTop: '5rem', margin: 'auto 0', fontWeight: 'normal' }}>
+                        Where Creativity Comes to Life{' '}
+                        <span style={{ color: 'red', fontWeight: 'bold' }}>
+                            {/* Style will be inherited from the parent element */}
+                            <Typewriter
+                                words={['Craft', 'Design', 'Create', 'Inspire!']}
+                                loop={5}
+                                cursor
+                                cursorStyle='_'
+                                typeSpeed={70}
+                                deleteSpeed={50}
+                                delaySpeed={1000}
+
+                            />
+                        </span>
+                    </h1>
                 </h3>
                 <p className="text-base md:text-lg text-slate-700 my-4 md:my-6">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam nobis in

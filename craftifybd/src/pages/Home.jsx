@@ -3,6 +3,7 @@ import CallToAction from "../components/CallToAction";
 import Category from "../components/Category";
 import ContactUs from "../components/ContactUs";
 // import ClientReviews from "../components/ClientReviews";
+
 import CraftItems from "../components/CraftItems";
 import FeaturedProducts from "../components/FeaturedProducts";
 import Header from "../components/Header";

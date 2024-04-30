@@ -23,7 +23,7 @@ const CategoryProduct = () => {
         <div>
             <div>
                 <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
-                    <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">
+                    <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-gray-400">
                         Browse all the products
                     </h2>
                     <p className="mt-1 text-gray-600 dark:text-neutral-400">
