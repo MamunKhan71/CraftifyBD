@@ -14,7 +14,6 @@ export const Toast = Swal.mixin({
     }
 });
 const UpdateProduct = ({ products }) => {
-    console.log(products);
     const [product, setProduct] = useState([])
     const [selectedStock, setSelectedStock] = useState(products.stockStatus);
     const [selectedCustomization, setSelectedCustomization] = useState(products.customization);

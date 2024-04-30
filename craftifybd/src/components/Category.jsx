@@ -1,17 +1,21 @@
-import { GiClayBrick, GiStoneTablet, GiPorcelainVase } from "react-icons/gi";
-import { SiKingstontechnology } from "react-icons/si";
-import { MdArchitecture, MdOutlineHomeWork } from "react-icons/md";
+import { PiNewspaperFill } from "react-icons/pi";
+import { TbFileScissors } from "react-icons/tb";
+import { FaPaperPlane } from "react-icons/fa";
+import { SiMedibangpaint } from "react-icons/si";
+import { BsFillLampFill } from "react-icons/bs";
+import { GiCrackedGlass } from "react-icons/gi";
+import { Link } from "react-router-dom";
 const Category = () => {
     return (
         <div className="p-4 space-y-24">
             <p className="text-2xl text-center font-semibold mb-2">Browse By Category</p>
             <div className="grid gap-12 grid-cols-2 lg:grid-cols-3">
-                <Card title="Clay-made pottery" href="#" Icon={GiClayBrick} />
-                <Card title="Stoneware" href="#" Icon={GiStoneTablet} />
-                <Card title="Porcelain" href="#" Icon={GiPorcelainVase} />
-                <Card title="Terra Cotta" href="#" Icon={SiKingstontechnology} />
-                <Card title="Ceramics & Architectural" href="#" Icon={MdArchitecture} />
-                <Card title="Home decor pottery" href="#" Icon={MdOutlineHomeWork} />
+                <Card title="Card Making" Icon={PiNewspaperFill} />
+                <Card title="Scrapbooking" Icon={TbFileScissors} />
+                <Card title="Paper Quilling & origami" Icon={FaPaperPlane} />
+                <Card title="Glass Painting" Icon={SiMedibangpaint} />
+                <Card title="Lampworking" Icon={BsFillLampFill} />
+                <Card title="Glass Dying & Staining" Icon={GiCrackedGlass} />
             </div>
         </div>
     );
@@ -19,7 +23,7 @@ const Category = () => {
 
 const Card = ({ title, Icon, href }) => {
     return (
-        <a
+        <Link to={`/productcategory/${title}`}
             href={href}
             className="w-full shadow-md p-4 rounded relative overflow-hidden group bg-white flex flex-col items-center justify-center"
         >
@@ -28,7 +32,7 @@ const Card = ({ title, Icon, href }) => {
             <h3 className="font-medium text-lg text-slate-950 group-hover:text-white relative z-10 duration-300">
                 {title}
             </h3>
-        </a>
+        </Link>
     );
 };
 
