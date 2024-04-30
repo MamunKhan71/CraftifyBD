@@ -112,7 +112,7 @@ const AddProducts = () => {
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
                                     <div className="sm:flex">
-                                        <input {...register('name')}
+                                        <input {...register('name')} required
                                             id="af-submit-application-email"
                                             type="text"
                                             className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -131,6 +131,7 @@ const AddProducts = () => {
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
                                     <input {...register('email')}
+                                        required
                                         id="af-submit-application-email"
                                         type="email"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -150,6 +151,7 @@ const AddProducts = () => {
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
                                     <input {...register('phone')}
+                                        required
                                         onChange={(e) => { setPhone(e.target.value) }}
                                         type="number"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -176,6 +178,7 @@ const AddProducts = () => {
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
                                     <input {...register('itemName')}
+                                        required
                                         id="af-submit-application-email"
                                         type="text"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
@@ -198,6 +201,7 @@ const AddProducts = () => {
                                             </span>
                                         </div>
                                         <input {...register('photo')}
+                                            required
                                             type="text"
                                             onChange={e => setPhoto(e.target.value)}
                                             name="hs-input-with-add-on-url"
@@ -219,7 +223,7 @@ const AddProducts = () => {
                                     </div>
                                 </div>
                                 <div className="sm:col-span-9">
-                                    <select {...register('subCategory')} className="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                                    <select required {...register('subCategory')} className="py-2 px-3 pe-9 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
                                         <option selected disabled>Select one</option>
                                         <option value={`Card Making`}>Card Making</option>
                                         <option value={`Scrapbooking`}>Scrapbooking</option>
@@ -242,7 +246,7 @@ const AddProducts = () => {
                                     <div>
 
                                         <div className="relative">
-                                            <input
+                                            <input required
                                                 {...register('price')}
                                                 onChange={(e) => setPrice(e.target.value)}
                                                 type="text"
@@ -266,7 +270,7 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <input {...register('rating')} type="range" min={1} max={5} value={sliderValue} className="range range-xs" step={1} onChange={(e) => setSliderValue(e.target.value)} />
+                                    <input required {...register('rating')} type="range" min={1} max={5} value={sliderValue} className="range range-xs" step={1} onChange={(e) => setSliderValue(e.target.value)} />
                                     <div className="w-full flex justify-between text-xs px-2">
                                         <span><FaStar className="text-lg text-amber-500" /></span>
                                         <span><FaStar className="text-lg text-amber-500" /></span>
@@ -307,7 +311,7 @@ const AddProducts = () => {
                                 </div>
                                 {/* End Col */}
                                 <div className="sm:col-span-9">
-                                    <input {...register('processingTime')}
+                                    <input required {...register('processingTime')}
                                         id="af-submit-application-email"
                                         type="text"
                                         className="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
