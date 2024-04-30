@@ -49,7 +49,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/products/:id',
-                element: <ProductDetails />
+                element: <ProtectedContent><ProductDetails /></ProtectedContent>
             },
             {
                 path: '/profile',
