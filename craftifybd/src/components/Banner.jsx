@@ -6,7 +6,7 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import Hero from './Hero';
 const Banner = () => {
     return (
-        <div className='h-[650px] relative my-12'>
+        <div className='lg:h-[650px] lg:relative my-12'>
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -21,7 +21,7 @@ const Banner = () => {
                 <SwiperSlide><img className='object-cover w-full' src="/images/banner-2.jpg" alt="" /></SwiperSlide>
                 <SwiperSlide><img className='object-cover w-full' src="/images/banner-3.jpg" alt="" /></SwiperSlide>
             </Swiper>
-            <div className='p-12 w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex gap-6 items-center justify-center flex-col'>
+            <div className='lg:p-12 w-full lg:absolute lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 lg:z-10 flex gap-6 items-center justify-center flex-col'>
                 <Hero />
             </div>
         </div>

@@ -14,9 +14,9 @@ const Category = () => {
             .then(data => setCategory(data))
     }, [])
     return (
-        <div className="p-4 space-y-24">
+        <div className="lg:p-4 space-y-8 lg:space-y-24">
             <p className="text-2xl text-center font-semibold mb-2">Browse By Category</p>
-            <div className="grid gap-12 grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {
                     category.map(cat => <><Card title={cat.categoryName} image={cat.categoryImage} /></>)
                 }

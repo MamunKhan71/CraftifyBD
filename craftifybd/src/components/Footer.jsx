@@ -2,7 +2,7 @@ const Footer = () => {
     return (
         <footer className="bg-white">
             <div className="mx-auto space-y-8 py-16  lg:space-y-16">
-                <div className="sm:flex sm:items-center sm:justify-between">
+                <div className="flex flex-col lg:flex-row items-center justify-between">
                     <div className="text-teal-600 flex gap-4 items-center">
                         <img className="w-12" src="/images/favicon.png" alt="" />
                         <h1 className="text-black font-bold text-lg">CraftifyBD.com</h1>
@@ -116,7 +116,7 @@ const Footer = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="grid grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16">
+                <div className="grid text-center lg:text-left grid-cols-1 gap-8 border-t border-gray-100 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-16">
                     <div>
                         <p className="font-medium text-gray-900">Services</p>
                         <ul className="mt-6 space-y-4 text-sm">

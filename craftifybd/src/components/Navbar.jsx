@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import SignOut from "./SignOut";
 const Navbar = () => {
-    const { user } = useContext(AuthContext)
+    const { user, userSignOut } = useContext(AuthContext)
     return (
         <div className="z-20 relative">
             <div className="navbar bg-base-100 px-0">
@@ -20,7 +20,7 @@ const Navbar = () => {
                             <li>
                                 <a>My Action</a>
                                 <ul className="p-2">
-                                    <li><a>Add Craft Item</a></li>
+                                    <li><NavLink to={`/addproducts`}>Add Craft Item</NavLink></li>
                                     <li><NavLink to="/myproducts">My Art & Craft List</NavLink></li>
                                 </ul>
                             </li>
@@ -29,7 +29,7 @@ const Navbar = () => {
                     <div className="flex items-center gap-2">
                         <img className="w-12" src="/images/favicon.png" alt="" />
                         <Link to={`/`}
-                            className="text-2xl font-bold bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient bg-300%"
+                            className="text-lg lg:text-2xl font-bold bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text animate-gradient bg-300%"
                         >
                             CraftifyBD.com
                         </Link>
@@ -66,10 +66,10 @@ const Navbar = () => {
                                 </div></div>
                                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-xl w-52">
                                     <li><NavLink to={`/profile`}>Profile</NavLink></li>
-                                    <li><button>Logout</button></li>
+                                    <li className="lg:hidden"><button onClick={() => { userSignOut() }}>Logout</button></li>
                                 </ul>
                             </div>
-                            <div>
+                            <div className="hidden lg:block">
                                 <SignOut />
                             </div>
                         </div> : <div>
