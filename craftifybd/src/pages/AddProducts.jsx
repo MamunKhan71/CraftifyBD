@@ -60,7 +60,7 @@ const AddProducts = () => {
             confirmButtonText: 'Yes, Add it'
         }).then((res) => {
             if (res.isConfirmed) {
-                fetch('http://localhost:5000/products', {
+                fetch('https://craftifybd.vercel.app/products', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'

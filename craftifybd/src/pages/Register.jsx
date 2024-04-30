@@ -45,7 +45,7 @@ const Register = () => {
                     userPhoto: photoURL,
                     userCreated: creationTime,
                 }
-                fetch('http://localhost:5000/addusers', {
+                fetch('https://craftifybd.vercel.app/addusers', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -82,7 +82,7 @@ const Register = () => {
                     userPhoto: photoURL,
                     userCreated: creationTime,
                 }
-                fetch('http://localhost:5000/addusers', {
+                fetch('https://craftifybd.vercel.app/addusers', {
                     method: "POST",
                     headers: {
                         'content-type': 'application/json'
@@ -124,7 +124,7 @@ const Register = () => {
                         userPhoto: photoURL,
                         userCreated: creationTime,
                     }
-                    fetch('http://localhost:5000/addusers', {
+                    fetch('https://craftifybd.vercel.app/addusers', {
                         method: "POST",
                         headers: {
                             'content-type': 'application/json'

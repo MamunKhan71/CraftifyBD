@@ -35,7 +35,7 @@ const EditUserProfile = ({ users }) => {
             userGender: gender || "",
             userInfo: description || ""
         }
-        fetch(`http://localhost:5000/updateuser/${users._id}`, {
+        fetch(`https://craftifybd.vercel.app/updateuser/${users._id}`, {
             method: "PATCH",
             headers: {
                 'content-type': 'application/json'

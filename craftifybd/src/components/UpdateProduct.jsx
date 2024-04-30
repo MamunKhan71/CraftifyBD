@@ -49,7 +49,7 @@ const UpdateProduct = ({ products }) => {
             itemDescription: itemDescription || product.itemDescription,
         };
 
-        fetch(`http://localhost:5000/userproducts/${product._id}`, {
+        fetch(`https://craftifybd.vercel.app/userproducts/${product._id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

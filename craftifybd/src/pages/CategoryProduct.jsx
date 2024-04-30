@@ -9,7 +9,7 @@ const CategoryProduct = () => {
     const [products, setProduct] = useState([])
     const [product, setProducts] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/categoryfilter/${category}`)
+        fetch(`https://craftifybd.vercel.app/categoryfilter/${category}`)
             .then(res => res.json())
             .then(data => setProduct(data))
             .then(setProducts(products))

@@ -6,7 +6,7 @@ const UserProfile = () => {
     const { user } = useContext(AuthContext)
     const [users, setUser] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/userprofile/${user?.uid}`)
+        fetch(`https://craftifybd.vercel.app/userprofile/${user?.uid}`)
             .then(res => res.json())
             .then(data => setUser(data))
     }, [user])

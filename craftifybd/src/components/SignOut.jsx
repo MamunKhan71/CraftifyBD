@@ -47,8 +47,7 @@ const SpringModal = ({ isOpen, setIsOpen, userSignOut }) => {
                                 Are you sure want to logout?
                             </h3>
                             <p className="text-center mb-6">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
-                                aperiam vitae, sapiente ducimus eveniet in velit.
+                                Thank you for using our platform. We hope to see you again soon.
                             </p>
                             <div className="flex gap-2">
                                 <button

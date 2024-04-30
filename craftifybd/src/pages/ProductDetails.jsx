@@ -6,7 +6,7 @@ const ProductDetails = () => {
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${id}`)
+        fetch(`https://craftifybd.vercel.app/products/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
             .then(setLoading(false))

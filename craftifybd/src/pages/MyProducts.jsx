@@ -12,7 +12,7 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext)
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        fetch(`http://localhost:5000/userproducts/${user?.uid}`)
+        fetch(`https://craftifybd.vercel.app/userproducts/${user?.uid}`)
             .then((res) => res.json())
             .then(data => setProduct(data))
             .then(setLoading(false))
@@ -27,7 +27,7 @@ const MyProducts = () => {
                 confirmButtonText: 'Yes, delete it'
             }).then((res) => {
                 if (res.isConfirmed) {
-                    fetch(`http://localhost:5000/userproducts/${products._id}`, {
+                    fetch(`https://craftifybd.vercel.app/userproducts/${products._id}`, {
                         method: "DELETE",
                     }).then(() => {
                         setProduct(product.filter(prod => prod._id !== products._id))

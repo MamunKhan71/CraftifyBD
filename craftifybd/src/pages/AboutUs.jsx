@@ -7,8 +7,7 @@ const AboutUs = () => {
                         Meet Our Experts
                     </h2>
                     <p className="max-w-md mx-auto mt-4 text-base leading-relaxed text-gray-600">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                        venenatis neque enim, congue bibendum at.
+                        At our core, we believe in building strong relationships with our customers, ensuring their satisfaction with every interaction. Our team is dedicated to delivering high-quality products and services that meet the unique needs of each individual.
                     </p>
                 </div>
                 <div className="grid grid-cols-2 mt-8 text-center sm:mt-16 lg:mt-20 sm:grid-cols-4 gap-y-8 lg:grid-cols-9 gap-x-0">

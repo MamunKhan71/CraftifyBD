@@ -11,7 +11,7 @@ const ProductList = () => {
         setProduct(products)
     }, [products])
     const handleFilter = () => {
-        fetch('http://localhost:5000/productfilter')
+        fetch('https://craftifybd.vercel.app/productfilter')
             .then(res => res.json())
             .then(data => setProduct(data))
     }

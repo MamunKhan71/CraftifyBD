@@ -7,7 +7,7 @@ const CallToAction = () => {
                 <h2 className="space-y-2 text-3xl sm:text-4xl text-white font-extrabold uppercase">Sign up now to get 10% off</h2>
                 {/* ::Text */}
                 <p className="mt-4 text-lg text-indigo-200 leading-6">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit culpa architecto quam molestiae labore, fugit, ratione dolor neque sunt iste voluptas!
+                    Enjoy a special 10% discount when you sign up today! Our exclusive offer is your ticket to savings on all your favorite products. Don't miss out on this opportunity to unlock great deals and perks. Join our community today and start saving!
                 </p>
                 {/* ::Buttons */}
                 <div className="mt-10 flex flex-col sm:flex-row justify-around items-center uppercase font-medium tracking-widest">

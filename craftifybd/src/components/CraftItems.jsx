@@ -23,7 +23,7 @@ const CraftItems = () => {
             <div className="card bg-base-100 shadow-lg transition hover:scale-105 hover:shadow-lg">
               <div className="relative">
                 <figure className="px-5 pt-5">
-                  <img src="/images/product1.jpg" alt="Shoes" className="rounded-xl h-72 w-full object-cover" />
+                  <img src={product.itemPhoto} alt="Shoes" className="rounded-xl h-72 w-full object-cover" />
                 </figure>
                 <div className="flex gap-2 absolute top-7 right-7">
                   <span className="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-blue-100 text-blue-800 dark:text-blue-500">
