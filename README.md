@@ -35,3 +35,10 @@
 * React Hook Form (for form validation)
 * React TypeWriter
 * React Lottie
+
+## Getting Started
+To run the project locally, follow these steps:
+1. Clone the repository: `git clone https://github.com/MamunKhan71/CraftifyBD.git`
+2. Navigate to the project directory: `cd CraftifyBD`
+4. Install dependencies: `npm install`
+5. Start the development server: `npm run dev`
