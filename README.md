@@ -4,7 +4,7 @@
 - [Firebase Live Client](https://craftifybd-dd2ee.web.app/)
 - [Vercel Server](https://craftifybd.vercel.app/)
 
-## Live Link
+## Server Side Link
 [CraftifyBD Server Side](https://github.com/MamunKhan71/CraftifyBD-Server) 
 
 ## Features
